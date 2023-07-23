@@ -1,4 +1,4 @@
-# Step-001: Send Events to Logstash/Elasticsearch
+# Bash Script for Sending Events to Logstash/Elasticsearch 
 
 TODO
 ---
