@@ -1,2 +1,7 @@
-# ELKy-Cookbook
-Step by step learning examples ...
+![ELKy](resources/images/ELKy-Logo02.png) 
+
+ToDo
+---
+Writing a content page for ELKy step by step learning examples!
+
+
