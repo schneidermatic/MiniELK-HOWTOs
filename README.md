@@ -2,6 +2,6 @@
 
 ToDo
 ---
-Writing a content page for ELKy step by step learning examples!
+Writing a content page for the collections of HOWTOs!
 
 
