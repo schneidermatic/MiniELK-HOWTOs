@@ -34,6 +34,8 @@ ELASTIC_USER=elastic
 ELASTIC_PASSWORD=changeme
 ELASTIC_INDEX="event"
 ELASTIC_DEST=""
+ELASTICSEARCH_PORT=9200
+LOGSTASH_PORT=8080
 VERBOSE=""
 SLEEP_TIME=0
 JSON_MESSAGE=""
@@ -141,7 +143,7 @@ send_event() {
     IP_ADDRESS=$(ifconfig eth0 | grep 'inet ' | cut -d " " -f10 | awk '{ print $1}')
     if [ "$ELASTIC_DEST" == "es" ]
     then
-        ENDPOINT="${IP_ADDRESS}:9200"
+        ENDPOINT="${IP_ADDRESS}:${ELASTICSEARCH_PORT}"
         if [ "$VERBOSE" == "vvv" ]
         then
             echo "curl -u $ELASTIC_USER:$ELASTIC_PASSWORD -XPOST -k -u $ELASTIC_USER:$ELASTIC_PASSWORD \"https://${ENDPOINT}/${ELASTIC_INDEX}/_doc\" -H 'Content-Type: application/json' -d \"$JSON_MESSAGE\""
@@ -153,7 +155,7 @@ send_event() {
         fi
     elif [ "$ELASTIC_DEST" == "ls" ]
     then
-        ENDPOINT="${IP_ADDRESS}:5818"
+        ENDPOINT="${IP_ADDRESS}:${LOGSTASH_PORT}"
         if [ "$VERBOSE" == "vvv" ]
         then
             echo "curl -u $ELASTIC_USER:$ELASTIC_PASSWORD -XPOST \"http://${ENDPOINT}\" -H 'Content-Type: application/json' -d \"$JSON_MESSAGE\""
