@@ -1,0 +1,38 @@
+input {
+  http {
+    port => "8081"
+    id => "my_plugin_id1"
+    codec => json_lines
+    type => 'event'
+  }
+}
+
+filter {
+  mutate {
+      remove_field => [ "host" ]
+  }
+  mutate {
+      rename => { "host" => "[host][name]" }
+  }
+}
+
+output {
+
+  # stdout { codec => rubydebug }
+
+  if [type] == 'event' {
+    http {
+        url => 'http://ls01:8080'
+        http_method => post
+        retry_non_idempotent => true
+        format => json_batch
+        http_compression => true
+    }
+  }
+
+  if [type] == 'event' {
+    file {
+      path  => "/usr/share/logstash/data/logstash.log"
+    }
+  }
+}
