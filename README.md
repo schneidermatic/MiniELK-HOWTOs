@@ -2,4 +2,4 @@
 
 ToDo
 ---
-Writing a content page for the collections of HOWTOs!
+Writing a content page for the collection of HOWTOs!
