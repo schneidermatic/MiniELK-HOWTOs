@@ -39,6 +39,18 @@ services:
           "      - localhost\n"\
           "    ip:\n"\
           "      - 127.0.0.1\n"\
+          "  - name: ls01\n"\
+          "    dns:\n"\
+          "      - ls01\n"\
+          "      - localhost\n"\
+          "    ip:\n"\
+          "      - 127.0.0.1\n"\
+          "  - name: ls02\n"\
+          "    dns:\n"\
+          "      - ls02\n"\
+          "      - localhost\n"\
+          "    ip:\n"\
+          "      - 127.0.0.1\n"\
           > config/certs/instances.yml;
           bin/elasticsearch-certutil cert --silent --pem -out config/certs/certs.zip --in config/certs/instances.yml --ca-cert config/certs/ca/ca.crt --ca-key config/certs/ca/ca.key;
           unzip config/certs/certs.zip -d config/certs;
@@ -142,7 +154,7 @@ services:
     environment:
       - 'LOGSTASH_USER=${LOGSTASH_USER}'
       - 'LOGSTASH_PASSWORD=${LOGSTASH_PASSWORD}'
-      - PIPELINE_WORKERS="2"
+      - PIPELINE_WORKERS=2
       - xpack.monitoring.enabled=true
       - xpack.monitoring.elasticsearch.username=${ELASTIC_USER}
       - xpack.monitoring.elasticsearch.password=${ELASTIC_PASSWORD}
@@ -175,7 +187,7 @@ services:
     environment:
       - 'LOGSTASH_USER=${LOGSTASH_USER}'
       - 'LOGSTASH_PASSWORD=${LOGSTASH_PASSWORD}'
-      - PIPELINE_WORKERS="1"
+      - PIPELINE_WORKERS=1
       - xpack.monitoring.enabled=true
       - xpack.monitoring.elasticsearch.username=${ELASTIC_USER}
       - xpack.monitoring.elasticsearch.password=${ELASTIC_PASSWORD}

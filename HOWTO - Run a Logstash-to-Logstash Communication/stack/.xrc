@@ -15,7 +15,7 @@
 # limitations under the License.                                              *
 #******************************************************************************/
 export PROJECT_HOME=$(pwd)
-export RESOURCES_HOME=$PROJECT_HOME/../resources
+export RESOURCES_HOME="$PROJECT_HOME/../../resources"
 export ELASTIC_SSL="no"
 
 #==============================================================================
@@ -27,4 +27,4 @@ export ELASTIC_SSL="no"
 # PURPOSE:  Shell environment file for the x_ command space
 #==============================================================================
 
-. $RESOURCES_HOME/scripts/.xrc
+. "$RESOURCES_HOME/scripts/.xrc"

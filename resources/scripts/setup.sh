@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #******************************************************************************
-# Copyright 2021 the original author or authors.                              *
+# Copyright 2020 the original author or authors.                              *
 #                                                                             *
 # Licensed under the Apache License, Version 2.0 (the "License");             *
 # you may not use this file except in compliance with the License.            *
@@ -14,17 +14,37 @@
 # See the License for the specific language governing permissions and         *
 # limitations under the License.                                              *
 #******************************************************************************/
-export PROJECT_HOME=$(pwd)
-export RESOURCES_HOME="$PROJECT_HOME/../../resources"
-export ELASTIC_SSL="no"
 
 #==============================================================================
-# SCRIPT:   .xrc
-# AUTOHR:   Markus Schneider (schneidermatic)
-# DATE:     2021-03-25
-# REV:      0.5.0
-# PLATFORM: noarch
-# PURPOSE:  Shell environment file for the x_ command space
+# SCRIPT:       setup.sh
+# AUTOHR:       Markus Schneider
+# CONTRIBUTERS: Markus Schneider,<YOU>
+# DATE:         2021-10-07
+# REV:          0.1.1
+# PLATFORM:     Noarch
+# PURPOSE:      setup the elastic-stack environment
 #==============================================================================
+SLEEP_TIME=5
 
-. "$RESOURCES_HOME/scripts/.xrc"
+##----------------------------------------
+## SETUP FUNCTIONS
+##----------------------------------------
+run_setup() {
+    sudo $RESOURCES_HOME/scripts/prereq.sh && \
+    echo "" && \
+    echo "" && \
+    echo "########################################" && \
+    echo "# System settings are defined !!!      #" && \
+    echo "########################################" && \
+    echo "" && \
+    sleep $SLEEP_TIME
+}
+
+##----------------------------------------
+## MAIN
+##----------------------------------------
+run_main() {
+   run_setup
+}
+
+run_main "$@"
