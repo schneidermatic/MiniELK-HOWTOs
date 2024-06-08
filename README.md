@@ -1,4 +1,4 @@
-![MiniELK](resources/images/MiniELK-HOWTOs_Logo01.png) 
+![MiniELK](resources/images/Logo01.png) 
 
 ToDo
 ---
